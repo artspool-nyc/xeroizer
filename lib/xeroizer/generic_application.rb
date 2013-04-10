@@ -9,6 +9,8 @@ module Xeroizer
     attr_reader :client, :xero_url, :logger, :rate_limit_sleep, :rate_limit_max_attempts,
                 :default_headers, :unitdp, :before_request, :after_request
 
+    attr_accessor :logger, :xero_url
+
     extend Forwardable
     def_delegators :client, :access_token
 
@@ -66,5 +68,10 @@ module Xeroizer
         @unitdp = options[:unitdp] || 2
       end
 
+      def payroll(options = {})
+        xero_client = self.clone
+        xero_client.xero_url = options[:xero_url] || "https://api.xero.com/payroll.xro/1.0"
+        @payroll ||= PayrollApplication.new(xero_client)
+      end
   end
 end
