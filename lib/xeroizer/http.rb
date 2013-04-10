@@ -107,6 +107,7 @@ module Xeroizer
           log_response(response, uri)
           after_request.call(request_info, response) if after_request
 
+
           case response.code.to_i
             when 200
               response.plain_body
