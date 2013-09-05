@@ -137,6 +137,10 @@ module Xeroizer
                   when :has_many
                     self.attributes[field_name] = []
                     self.send("add_#{internal_singular_field_name}".to_sym, value)
+
+                  when :has_one
+                    self.attributes[field_name] = self.send("set_#{internal_singular_field_name}".to_sym, value)
+
                   when :belongs_to
                     self.attributes[field_name] = (options[:base_module] || Xeroizer::Record).const_get(model_name).build(value, new_model_class(model_name))
 
