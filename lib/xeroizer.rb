@@ -67,7 +67,6 @@ require 'xeroizer/models/journal_line_tracking_category'
 require 'xeroizer/models/contact_sales_tracking_category'
 require 'xeroizer/models/contact_purchases_tracking_category'
 
-<<<<<<< HEAD
 require 'xeroizer/models/payroll/tax_declaration'
 require 'xeroizer/models/payroll/home_address'
 require 'xeroizer/models/payroll/bank_account'
@@ -75,11 +74,6 @@ require 'xeroizer/models/payroll/employee'
 require 'xeroizer/models/payroll/pay_schedule'
 require 'xeroizer/models/payroll/pay_run'
 require 'xeroizer/models/payroll/pay_stub'
-=======
-require 'xeroizer/models/payroll/home_address'
-require 'xeroizer/models/payroll/bank_account'
-require 'xeroizer/models/payroll/employee'
->>>>>>> Base Payroll Endpoint/Application Addition
 
 require 'xeroizer/report/factory'
 
