@@ -77,9 +77,5 @@ module Xeroizer
         xero_client.xero_url = options[:xero_url] || "https://api.xero.com/payroll.xro/1.0"
         @payroll ||= PayrollApplication.new(xero_client)
       end
-<<<<<<< HEAD
-=======
-
->>>>>>> 143897039_merge_upstream_changes_june_2017
   end
 end
