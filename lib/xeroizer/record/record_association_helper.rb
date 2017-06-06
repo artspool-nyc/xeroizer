@@ -29,13 +29,13 @@ module Xeroizer
             self.attributes[field_name] = record
           end
         end
-        
+
         alias_method :has_one, :belongs_to
 
         def has_many(field_name, options = {})
           internal_field_name = options[:internal_name] || field_name
           internal_singular_field_name = options[:internal_name_singular] || internal_field_name.to_s.singularize
-        
+
           define_association_attribute(field_name, internal_field_name, :has_many, options)
 
           # Create an #add_record_name method to build the record and add to the attributes.
@@ -87,7 +87,7 @@ module Xeroizer
           internal_field_name = options[:internal_name] || field_name
           internal_singular_field_name = options[:internal_name_singular] || internal_field_name.to_s.singularize
           model_name = options[:model_name] ? options[:model_name].to_sym : field_name.to_s.singularize.camelize.to_sym
-          define_method "#{internal_field_name}=".to_sym do | value |    
+          define_method "#{internal_field_name}=".to_sym do | value |
             record_class = (options[:base_module] || Xeroizer::Record).const_get(model_name)
             case value
               when Hash
@@ -97,9 +97,9 @@ module Xeroizer
                     self.attributes[field_name] = []
                     self.send("add_#{internal_singular_field_name}".to_sym, value)
 
-                  when :belongs_to                  
+                  when :belongs_to
                     self.attributes[field_name] = (options[:base_module] || Xeroizer::Record).const_get(model_name).build(value, new_model_class(model_name))
-                   
+
                 end
 
               when Array
